@@ -25,25 +25,13 @@ export class GildedRose {
                 {
                     if (this.items[i].name == 'Aged Brie') 
                     {
-                        if (this.items[i].sellIn > 0) 
-                        {
-                            this.items[i].quality= Math.min(this.items[i].quality + 1, 50); // increases by 1
-                        }
-                        else
-                        {
-                            this.items[i].quality = Math.min(this.items[i].quality + 2, 50); // Once the sell by date has passed, Quality increase twice as fast
-                        }
+                        this.items[i].quality=  (this.items[i].sellIn > 0) ?  Math.min(this.items[i].quality + 1, 50): // increase by 1
+                        Math.min(this.items[i].quality + 2, 50); // increase by 2 if outdated
                     } 
                     else if (this.items[i].name == 'Conjured Mana Cake') 
                     {
-                        if (this.items[i].sellIn > 0) 
-                        {
-                            this.items[i].quality = Math.max(this.items[i].quality - 2, 0);// degrades twice as fast as normal items
-                        }
-                        else
-                        {
-                            this.items[i].quality = Math.min(this.items[i].quality - 4, 0); // Once the sell by date has passed, Quality degrades twice as fast
-                        }
+                        this.items[i].quality=  (this.items[i].sellIn > 0) ?  Math.max(this.items[i].quality - 2, 0): // degrade by 2
+                        Math.max(this.items[i].quality - 4, 0); // degrade by 4 if outdated
                     }
                     else if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert')
                     {
@@ -66,20 +54,13 @@ export class GildedRose {
                     }
                     else 
                     {
-                        if (this.items[i].sellIn > 0) 
-                        {
-                            this.items[i].quality = Math.max(this.items[i].quality - 1 , 0); // degrades by 1
-                        }
-                        else
-                        {
-                            this.items[i].quality = Math.max(this.items[i].quality - 2 , 0); // Once the sell by date has passed, Quality degrades twice as fast
-                        }
+                        this.items[i].quality=  (this.items[i].sellIn > 0) ?  Math.max(this.items[i].quality - 1, 0): // degrade by 1
+                        Math.max(this.items[i].quality - 2, 0); // degrade by 2 if outdated
                     } 
 
                 }
                 
-            
-                
+        
                 this.items[i].sellIn -= 1;
             } 
         }
